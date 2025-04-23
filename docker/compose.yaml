@@ -1,10 +1,12 @@
 services:
   checker:
     build:
-      context: .
+      context: ..
+      dockerfile: docker/Dockerfile
     container_name: playwright-checker
     env_file:
-      - .env
+      - ../.env
     volumes:
       - ./playwright-report:/app/playwright-report
+    working_dir: /app
     command: yarn start
