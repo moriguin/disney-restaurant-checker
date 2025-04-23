@@ -1,0 +1,10 @@
+services:
+  checker:
+    build:
+      context: .
+    container_name: playwright-checker
+    env_file:
+      - .env
+    volumes:
+      - ./playwright-report:/app/playwright-report
+    command: yarn start
