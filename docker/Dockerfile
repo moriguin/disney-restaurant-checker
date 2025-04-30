@@ -1,9 +1,10 @@
 FROM mcr.microsoft.com/playwright:v1.42.1-jammy
 
-WORKDIR /app
-COPY ../ .
-
+COPY ../package.json ./
+COPY ../yarn.lock ./
 RUN yarn install
+
+COPY ../ .
 RUN npx playwright install --with-deps
 
-CMD ["yarn", "start"]
+CMD ["yarn", "tsx", "src/runner.ts"]
