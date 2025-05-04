@@ -6,8 +6,6 @@ const execAsync = promisify(exec);
 async function runTask() {
   console.log("タスク開始: ", new Date().toLocaleString());
   try {
-    const { stdout: pullOut } = await execAsync("git pull origin develop");
-    console.log("✅ Git Pull 完了:\n", pullOut);
     const { stdout: testOut } = await execAsync("yarn test");
     console.log("✅ テスト完了:\n", testOut);
   } catch (err) {

@@ -1,12 +1,12 @@
 services:
   checker:
     build:
-      context: .
+      context: ..
       dockerfile: docker/Dockerfile
-    container_name: playwright-checker
+    container_name: disney-restaurant-checker
+    # コンテキストルートはプロジェクトルートだが.envファイルはcompose.yamlからの位置で指定する
     env_file:
       - ../.env
-    volumes:
-      - ..:/app
     working_dir: /app
-    command: yarn tsx src/runner.ts
+    volumes: []
+    command: sh -c "xvfb-run --auto-servernum --server-args='-screen 0 1280x800x24' yarn tsx src/runner.ts"

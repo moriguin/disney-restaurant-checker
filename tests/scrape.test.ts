@@ -3,9 +3,9 @@ import { notify } from "../src/notify";
 import { chromium } from "playwright";
 
 test("ディズニー予約画面のスクレイピング", async ({ page }) => {
-  // 2025年4月30日（水）ディズニーシー,夕食時間帯,大人2名,子ども1名3歳に予約可能なレストランを検索するURL
+  // 2025年05月30日ディズニーシー,夕食時間帯,大人2名,子ども1名3歳に予約可能なレストランを検索するURL
   const targetUrl =
-    "https://reserve.tokyodisneyresort.jp/restaurant/search/?useDate=20250430&mealDivList%5B2%5D=3&adultNum=2&childNum=1&childAgeInform=03%7C&restaurantType%5B1%5D=5&nameCd=&wheelchairCount=0&stretcherCount=0&keyword=&reservationStatus=1";
+    "https://reserve.tokyodisneyresort.jp/restaurant/search/?useDate=20250530&mealDivList%5B2%5D=3&adultNum=2&childNum=1&childAgeInform=03%7C&restaurantType%5B1%5D=5&nameCd=&wheelchairCount=0&stretcherCount=0&keyword=&reservationStatus=1";
 
   console.log("アクセス開始");
   await page.goto(targetUrl, { waitUntil: "domcontentloaded" });

@@ -1,10 +1,10 @@
 FROM mcr.microsoft.com/playwright:v1.42.1-jammy
 
-COPY ../package.json ./
-COPY ../yarn.lock ./
+WORKDIR /app
+
+COPY package.json yarn.lock ./
 RUN yarn install
-
-COPY ../ .
 RUN npx playwright install --with-deps
+RUN apt update && apt install -y xvfb
 
-CMD ["yarn", "tsx", "src/runner.ts"]
+COPY . .
